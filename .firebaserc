@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "auto-detect-api-angular"
+  }
+}
