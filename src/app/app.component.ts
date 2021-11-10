@@ -13,13 +13,22 @@ export class AppComponent {
     if ('OTPCredential' in window) {
       window.addEventListener('DOMContentLoaded', (e) => {
         const ac = new AbortController();
+        setTimeout(() => {
+          ac.abort();
+        }, 1 * 60 * 1000);
         let options = {
           otp: { transport: ['sms'] },
           signal: ac.signal,
-          password: true
+          password: true,
+          abort: ac,
         };
-        alert("Reached Here");
-        this.data="step1"
+        alert('Reached Here');
+        this.data = 'step1';
+        if(navigator.credentials){
+          this.data='step2'
+        }else{
+          this.data="failed";
+        }
         navigator.credentials
           .get(options)
           .then((otp) => {
@@ -28,12 +37,12 @@ export class AppComponent {
           })
           .catch((err) => {
             console.log(err);
-            this.data=err.message;
+            this.data = err.message;
           });
       });
     } else {
       alert('WebOTP not supported!.');
-      this.data="WebOTP not supported";
+      this.data = 'WebOTP not supported';
     }
   }
 }
