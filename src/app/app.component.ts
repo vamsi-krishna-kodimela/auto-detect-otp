@@ -16,9 +16,10 @@ export class AppComponent {
         let options = {
           otp: { transport: ['sms'] },
           signal: ac.signal,
+          password: true
         };
         alert("Reached Here");
-        this.data="step1";
+        this.data="step1"
         navigator.credentials
           .get(options)
           .then((otp) => {
