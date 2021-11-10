@@ -25,10 +25,12 @@ export class AppComponent {
           })
           .catch((err) => {
             console.log(err);
+            this.data=err.message;
           });
       });
     } else {
       alert('WebOTP not supported!.');
+      this.data="WebOTP not supported";
     }
   }
 }
