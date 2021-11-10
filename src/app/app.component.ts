@@ -17,6 +17,8 @@ export class AppComponent {
           otp: { transport: ['sms'] },
           signal: ac.signal,
         };
+        alert("Reached Here");
+        this.data="step1";
         navigator.credentials
           .get(options)
           .then((otp) => {
