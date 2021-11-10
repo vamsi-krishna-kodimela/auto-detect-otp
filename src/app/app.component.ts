@@ -29,7 +29,8 @@ export class AppComponent {
         }else{
           this.data="failed";
         }
-        await navigator.credentials
+        try{
+             await navigator.credentials
           .get(options)
           .then((otp) => {
             this.data = JSON.stringify(otp);
@@ -39,6 +40,10 @@ export class AppComponent {
             console.log(err);
             this.data = err.message;
           });
+        }catch{
+          this.data="errrrrr";
+        }
+     
       });
     } else {
       alert('WebOTP not supported!.');
