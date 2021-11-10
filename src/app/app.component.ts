@@ -11,7 +11,7 @@ export class AppComponent {
   ngOnInit() {}
   ngAfterViewInit() {
     if ('OTPCredential' in window) {
-      window.addEventListener('DOMContentLoaded', (e) => {
+      window.addEventListener('DOMContentLoaded', async (e) => {
         const ac = new AbortController();
         setTimeout(() => {
           ac.abort();
@@ -29,7 +29,7 @@ export class AppComponent {
         }else{
           this.data="failed";
         }
-        navigator.credentials
+        await navigator.credentials
           .get(options)
           .then((otp) => {
             this.data = JSON.stringify(otp);
